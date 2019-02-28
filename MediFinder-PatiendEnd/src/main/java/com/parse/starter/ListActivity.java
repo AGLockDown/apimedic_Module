@@ -1,4 +1,5 @@
 package com.parse.starter;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -9,6 +10,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -43,13 +46,13 @@ public class ListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_layout);
+
         listView=(ListView) findViewById(R.id.list_view);
 
         BackGroundTask bt = new BackGroundTask();
         bt.execute();
         etSearch=(EditText) findViewById(R.id.et_search);
         etSearch.setSingleLine(true);
-
 
         etSearch.addTextChangedListener(new TextWatcher() {
 
@@ -83,6 +86,19 @@ public class ListActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 
     private class BackGroundTask extends AsyncTask<Void, Void, String> {

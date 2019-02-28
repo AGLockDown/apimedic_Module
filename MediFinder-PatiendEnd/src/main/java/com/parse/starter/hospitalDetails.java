@@ -1,5 +1,9 @@
 package com.parse.starter;
 
+import android.app.ActionBar;
+import android.content.Intent;
+import android.view.MenuItem;
+
 public class hospitalDetails {
     String name;
     String distance;
@@ -19,5 +23,4 @@ public class hospitalDetails {
     public void setDistance(String distance) {
         this.distance = distance;
     }
-
 }

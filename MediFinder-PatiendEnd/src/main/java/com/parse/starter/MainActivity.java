@@ -7,10 +7,13 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 package com.parse.starter;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 
@@ -41,13 +44,21 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
-
-
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
-
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+//        finish();
+        return true;
+      }
+     return super.onOptionsItemSelected(item);
+   }
+   public boolean onCreateOptionsMenu(Menu menu) {
+     return true;
+   }
 }

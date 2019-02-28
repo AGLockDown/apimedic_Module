@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class nearbyHospital extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),lat, Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(),lon, Toast.LENGTH_SHORT).show();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //List View for showing Hospitals
 
@@ -53,5 +56,17 @@ public class nearbyHospital extends AppCompatActivity {
 
         hospitalView.setAdapter(new MyAdapter(this, hospitals));
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
